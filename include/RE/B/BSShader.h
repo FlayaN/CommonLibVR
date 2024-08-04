@@ -14,6 +14,9 @@ namespace RE
 {
 	class BSRenderPass;
 	class BSShaderMaterial;
+	class BSShaderProperty;
+	class BSGeometry;
+	class BSLight;
 
 	namespace BSGraphics
 	{
@@ -29,7 +32,7 @@ namespace RE
 		public:
 			// members
 			REX::W32::ID3D11Buffer* buffer;  // 00
-			void*         data;    // 08
+			void*                   data;    // 08
 		};
 		static_assert(sizeof(ConstantGroup) == 0x10);
 
@@ -37,10 +40,10 @@ namespace RE
 		{
 		public:
 			// members
-			std::uint32_t               id;                  // 00
+			std::uint32_t                id;                  // 00
 			REX::W32::ID3D11PixelShader* shader = nullptr;    // 08
-			ConstantGroup               constantBuffers[3];  // 10
-			std::array<std::int8_t, 64> constantTable;       // 58
+			ConstantGroup                constantBuffers[3];  // 10
+			std::array<std::int8_t, 64>  constantTable;       // 58
 		};
 		static_assert(sizeof(PixelShader) == 0x80);
 
@@ -48,14 +51,14 @@ namespace RE
 		{
 		public:
 			// members
-			std::uint32_t               id;                  // 00
+			std::uint32_t                 id;                  // 00
 			REX::W32::ID3D11VertexShader* shader = nullptr;    // 08
-			std::uint32_t               byteCodeSize;        // 10
-			ConstantGroup               constantBuffers[3];  // 18
-			std::uint64_t               shaderDesc;          // 48
-			std::array<std::int8_t, 20> constantTable;       // 50
-			std::uint32_t               pad64;               // 64
-			std::uint8_t                rawBytecode[0];      // 68
+			std::uint32_t                 byteCodeSize;        // 10
+			ConstantGroup                 constantBuffers[3];  // 18
+			std::uint64_t                 shaderDesc;          // 48
+			std::array<std::int8_t, 20>   constantTable;       // 50
+			std::uint32_t                 pad64;               // 64
+			std::uint8_t                  rawBytecode[0];      // 68
 		};
 		static_assert(sizeof(VertexShader) == 0x68);
 	}
@@ -128,6 +131,13 @@ namespace RE
 		virtual void RestoreGeometry(BSRenderPass* a_currentPass, std::uint32_t a_renderFlags) = 0;              // 07
 		virtual void GetTechniqueName(std::uint32_t a_techniqueID, char* a_buffer, std::uint32_t a_bufferSize);  // 08
 		virtual void ReloadShaders(bool a_clear);                                                                // 09
+
+		RE::BSRenderPass* MakeRenderPass(BSShaderProperty* property, BSGeometry* geometry, uint32_t technique, uint8_t numLights, BSLight** lights)
+		{
+			using func_t = decltype(&BSShader::MakeRenderPass);
+			static REL::Relocation<func_t> func{ RELOCATION_ID(100717, 107497) };
+			return func(this, property, geometry, technique, numLights, lights);
+		}
 
 		// members
 		stl::enumeration<Type, std::int32_t>                       shaderType;     // 20
