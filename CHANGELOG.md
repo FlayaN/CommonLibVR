@@ -1,3 +1,9 @@
+## [9.2.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v9.1.0...v9.2.0) (2026-09-27)
+
+### Features
+
+* **state:** add BuildCameraStateData ([#379](https://github.com/alandtse/CommonLibSSE-NG/issues/379)) ([ee6ebeb](https://github.com/alandtse/CommonLibSSE-NG/commit/ee6ebeb02a4575670015e19fe51992b7146145c7))
+
 ## [9.1.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v9.0.2...v9.1.0) (2026-09-24)
 
 ### Features
