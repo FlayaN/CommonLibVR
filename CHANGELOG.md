@@ -1,3 +1,18 @@
+## [10.0.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v9.3.0...v10.0.0) (2026-09-28)
+
+### ⚠ BREAKING CHANGES
+
+* **package:** CreatePackage and SetPackType take PACKAGE_TYPE. Callers
+passing PACKAGE_PROCEDURE_TYPE no longer compile; each such call passed a
+value the engine reads as a different package type.
+
+Co-authored-by: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+
+### Bug Fixes
+
+* **magic:** return the actor from GetTargetActor ([#382](https://github.com/alandtse/CommonLibSSE-NG/issues/382)) ([8702dcf](https://github.com/alandtse/CommonLibSSE-NG/commit/8702dcfd4d7445c0b3ceddee1668eb3edac3f58a))
+* **package:** CreatePackage takes PACKAGE_TYPE ([#383](https://github.com/alandtse/CommonLibSSE-NG/issues/383)) ([2184d3f](https://github.com/alandtse/CommonLibSSE-NG/commit/2184d3f3d9abf6ccde5b41e75ddbd415d0b9cc28))
+
 ## [9.3.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v9.2.0...v9.3.0) (2026-09-28)
 
 ### Features
