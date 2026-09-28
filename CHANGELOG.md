@@ -1,3 +1,9 @@
+## [9.3.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v9.2.0...v9.3.0) (2026-09-28)
+
+### Features
+
+* fix NiSkinInstance::Create, add Dismember ([#384](https://github.com/alandtse/CommonLibSSE-NG/issues/384)) ([c23f062](https://github.com/alandtse/CommonLibSSE-NG/commit/c23f062b2c02e86b381408f80ecc89caa473fc66))
+
 ## [9.2.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v9.1.0...v9.2.0) (2026-09-27)
 
 ### Features
