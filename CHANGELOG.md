@@ -1,3 +1,33 @@
+## [10.1.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v10.0.1...v10.1.0) (2026-09-30)
+
+### Features
+
+* `BSScript::Object::~Object` impl ([1730166](https://github.com/alandtse/CommonLibSSE-NG/commit/1730166ecab6e6d3d4b5411b62929d1cfd312e51))
+
+### Bug Fixes
+
+* **actor:** declare VR-only ModifyRotationZ ([#397](https://github.com/alandtse/CommonLibSSE-NG/issues/397)) ([9c6fe61](https://github.com/alandtse/CommonLibSSE-NG/commit/9c6fe616d06744a1c76e4371b07f2a7686616372))
+* **actor:** swap charge refresh ids ([#404](https://github.com/alandtse/CommonLibSSE-NG/issues/404)) ([008515e](https://github.com/alandtse/CommonLibSSE-NG/commit/008515e8e44cebd85a9050f37918f4ca7fb9670c))
+* **AE:** add 1.7 ids for two bindings ([#401](https://github.com/alandtse/CommonLibSSE-NG/issues/401)) ([6d61bd5](https://github.com/alandtse/CommonLibSSE-NG/commit/6d61bd546e9fdb16bb66b133b40b1ac9a68da462))
+* **combatbehavior:** correct AE ids ([#390](https://github.com/alandtse/CommonLibSSE-NG/issues/390)) ([fc0ccee](https://github.com/alandtse/CommonLibSSE-NG/commit/fc0ccee34f5435993faaee185285e51c3a47ddee))
+* **combatbehavior:** handle AE-inlined functions ([#393](https://github.com/alandtse/CommonLibSSE-NG/issues/393)) ([fb8203e](https://github.com/alandtse/CommonLibSSE-NG/commit/fb8203e0d8a38c7e73ca71129e54c1437af7a2fd))
+* **combatbehaviortree:** bind the real constructor ([#389](https://github.com/alandtse/CommonLibSSE-NG/issues/389)) ([e8d43fb](https://github.com/alandtse/CommonLibSSE-NG/commit/e8d43fb3ab7388a8f4238cadb39cbd4ac2b24ff8))
+* **inventory3d:** pass VR device to ToggleItemZoom ([#406](https://github.com/alandtse/CommonLibSSE-NG/issues/406)) ([bec5863](https://github.com/alandtse/CommonLibSSE-NG/commit/bec5863255c14231f55fe5918c11e4c57ba7131f))
+* **inventorychanges:** correct GetItemCount AE ID ([#387](https://github.com/alandtse/CommonLibSSE-NG/issues/387)) ([e56fab0](https://github.com/alandtse/CommonLibSSE-NG/commit/e56fab069ebf93e774a6965d44402f6b6e95ce3e))
+* **inventorychanges:** correct SetUniqueID AE ID ([#385](https://github.com/alandtse/CommonLibSSE-NG/issues/385)) ([724bf92](https://github.com/alandtse/CommonLibSSE-NG/commit/724bf92643d91587099bc9d4b3a2f1996605c13c))
+* **inventoryentrydata:** swap SetWorn SE/AE IDs ([#388](https://github.com/alandtse/CommonLibSSE-NG/issues/388)) ([ebfaf78](https://github.com/alandtse/CommonLibSSE-NG/commit/ebfaf786e765cf33b473c3b938e196a1430ad4fd))
+* **magiccaster:** correct PlayReleaseSound AE ID ([#394](https://github.com/alandtse/CommonLibSSE-NG/issues/394)) ([3a1fdf1](https://github.com/alandtse/CommonLibSSE-NG/commit/3a1fdf117f9f06f39a61649355c905be8c705643))
+* **magic:** correct ForEachActiveEffect ID ([#407](https://github.com/alandtse/CommonLibSSE-NG/issues/407)) ([ad0b9fc](https://github.com/alandtse/CommonLibSSE-NG/commit/ad0b9fc14cf617c25f5df73ffe8ee4f3698402fa))
+* **nitrishape:** move Unk_3B to NiTriShape ([#399](https://github.com/alandtse/CommonLibSSE-NG/issues/399)) ([3e61bdd](https://github.com/alandtse/CommonLibSSE-NG/commit/3e61bdd73a3867a058eefc7da69c25a19205ea87))
+* pass missing arguments to six engine calls ([#402](https://github.com/alandtse/CommonLibSSE-NG/issues/402)) ([3100030](https://github.com/alandtse/CommonLibSSE-NG/commit/31000306ea96d1bf1fdcd14f5f45deb176a31cbb))
+* pass the extra arguments AE 1.7 and VR read ([#403](https://github.com/alandtse/CommonLibSSE-NG/issues/403)) ([7b38593](https://github.com/alandtse/CommonLibSSE-NG/commit/7b38593c08cdcaf60371bb7414ec4f2bd5c7d5f6))
+* **player:** pass the skill advance context ([#405](https://github.com/alandtse/CommonLibSSE-NG/issues/405)) ([82f1550](https://github.com/alandtse/CommonLibSSE-NG/commit/82f155034be31aec56d7c8010d6121cfe173bb46))
+* **scaleform:** use AE 1.6 id for IsValidName ([1736f41](https://github.com/alandtse/CommonLibSSE-NG/commit/1736f41d8c5f24c300014c6ac85ca3c75a9c3946))
+* stop two Dtor() calls freeing their object ([#395](https://github.com/alandtse/CommonLibSSE-NG/issues/395)) ([f298e23](https://github.com/alandtse/CommonLibSSE-NG/commit/f298e231d4958f27cacbbc1bd11dcc553b096a2b))
+* sync change with commonlibsse-ng ([2415cc9](https://github.com/alandtse/CommonLibSSE-NG/commit/2415cc998b611d3f0ac15fcfeadca9c83b1bf7f8))
+* **vr:** correct three virtual slots ([#396](https://github.com/alandtse/CommonLibSSE-NG/issues/396)) ([1fc6c44](https://github.com/alandtse/CommonLibSSE-NG/commit/1fc6c44a0c8a680a14905566d753d0ffcfb32124))
+* **vr:** route shifted virtuals through wrappers ([#398](https://github.com/alandtse/CommonLibSSE-NG/issues/398)) ([de4950e](https://github.com/alandtse/CommonLibSSE-NG/commit/de4950e6807f59b4dc1f782cc44ef90d364d4bd7))
+
 ## [10.0.1](https://github.com/alandtse/CommonLibSSE-NG/compare/v10.0.0...v10.0.1) (2026-09-30)
 
 ## [10.0.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v9.3.0...v10.0.0) (2026-09-28)
