@@ -1,3 +1,5 @@
+## [10.0.1](https://github.com/alandtse/CommonLibSSE-NG/compare/v10.0.0...v10.0.1) (2026-09-30)
+
 ## [10.0.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v9.3.0...v10.0.0) (2026-09-28)
 
 ### ⚠ BREAKING CHANGES
