@@ -1,3 +1,52 @@
+## [11.0.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v10.1.0...v11.0.0) (2026-10-04)
+
+### ⚠ BREAKING CHANGES
+
+* **magic:** MagicTarget::GetActiveEffectList is removed in VR-only builds
+(use VisitActiveEffects or GetVRActiveEffectList) and returns nullptr on VR in
+all-runtime builds; derived classes in builds that include VR override
+GetActiveEffectListNative. NonActorMagicTarget and MiddleHighProcessData
+activeEffects change type, and GetNthEffect now returns the nth effect.
+
+Co-authored-by: Claude Sonnet 5.5 <noreply@anthropic.com>
+* **VR:** hkbProjectStringData::rootPath is removed; the VR-only
+PlayerControls notifyingHandlers, blockPlayerInput, unk1DA and unk1DC are
+replaced by the VR handler pointers. VR sizes and offsets of the derived input
+handlers change.
+
+Co-authored-by: Claude Sonnet 5.5 <noreply@anthropic.com>
+* MapCameraStates::Transition::zoomOrigin is removed,
+MapMenu::AsIMapCameraCallbacks returns nullptr on VR, and the VR LocalMapMenu
+renderer data drops renderTarget and renderMode. VR sizes change for BSThread
+and subclasses, NiGeometryData, FaderData, ImageSpaceShaderParam and MapMenu.
+
+Co-authored-by: Claude Sonnet 5.5 <noreply@anthropic.com>
+* BSOcclusionBox::faces is replaced by corners and
+BSOcclusionPlane::frustum by frustumPlanes, VR BSCullingProcess gains
+ClearCollectedGeometry at slot 0x1A so TestBaseVisibility1-3 move up one slot
+there, and the NiAVObject VR layout is corrected.
+
+Co-authored-by: Claude Sonnet 5.5 <noreply@anthropic.com>
+* **frustum:** BSCompoundFrustum::functionOperators is now BSTArray<Operator>
+instead of BSTArray<void*>; code indexing it as an array of pointers no longer
+compiles.
+
+Co-authored-by: Claude Sonnet 5.5 <noreply@anthropic.com>
+
+### Features
+
+* **frustum:** add BSCompoundFrustum operators ([#412](https://github.com/alandtse/CommonLibSSE-NG/issues/412)) ([c8f5c3b](https://github.com/alandtse/CommonLibSSE-NG/commit/c8f5c3bcb39a1ac060611c5a0cc2fab5b749a8f3))
+* **menutopic:** name seven unknown members ([#409](https://github.com/alandtse/CommonLibSSE-NG/issues/409)) ([e4b418b](https://github.com/alandtse/CommonLibSSE-NG/commit/e4b418bb681e52521d15bed94ab168585631dba0))
+* **quest:** add UpdateCurrentInstanceGlobal ([#408](https://github.com/alandtse/CommonLibSSE-NG/issues/408)) ([95fd8d1](https://github.com/alandtse/CommonLibSSE-NG/commit/95fd8d1bf5f6c8da6f003862f06184513179011b))
+* **VR:** add VR handlers, correct type layouts ([#416](https://github.com/alandtse/CommonLibSSE-NG/issues/416)) ([b5dd12d](https://github.com/alandtse/CommonLibSSE-NG/commit/b5dd12dee701d3382560f9aaa91b85785ac30696))
+
+### Bug Fixes
+
+* correct container layouts and struct sizes ([#419](https://github.com/alandtse/CommonLibSSE-NG/issues/419)) ([59a636e](https://github.com/alandtse/CommonLibSSE-NG/commit/59a636e2b9a62799340364f49974b6d2aeabe4cb))
+* correct occlusion, culling, portal layouts ([#420](https://github.com/alandtse/CommonLibSSE-NG/issues/420)) ([da406d7](https://github.com/alandtse/CommonLibSSE-NG/commit/da406d78849938c11da90f2ab1449f44439a82e1))
+* **decal:** name DECAL_CREATION_DATA fields ([#421](https://github.com/alandtse/CommonLibSSE-NG/issues/421)) ([f47074f](https://github.com/alandtse/CommonLibSSE-NG/commit/f47074fd1bfce89c707d2424ae9db20ac5ca7070))
+* **magic:** use real MagicTarget VR virtuals ([#417](https://github.com/alandtse/CommonLibSSE-NG/issues/417)) ([62a1936](https://github.com/alandtse/CommonLibSSE-NG/commit/62a19369356e73654d8c38d3a8f02fc6c345a17d))
+
 ## [10.1.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v10.0.1...v10.1.0) (2026-09-30)
 
 ### Features
