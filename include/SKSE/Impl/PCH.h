@@ -1,11 +1,11 @@
 #pragma once
 
-#include <coroutine>
-#include <numbers>
 #include "REX/BASE.h"
 #include "REX/REX.h"
 #include "REX/W32/KERNEL32.h"
 #include "REX/W32/USER32.h"
+#include <coroutine>
+#include <numbers>
 
 #pragma warning(push)
 #include <spdlog/spdlog.h>

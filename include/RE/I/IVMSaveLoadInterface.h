@@ -29,8 +29,8 @@ namespace RE
 			static_assert(sizeof(StringEntry) == 0x10);
 
 			// members
-			void*                                       unk00;      // 00
-			BSScrapArray<StringEntry>*                  entries;    // 08
+			void*                                        unk00;      // 00
+			BSScrapArray<StringEntry>*                   entries;    // 08
 			REX::TEnumSet<StringIndexSize, std::int32_t> indexSize;  // 10
 		};
 		static_assert(sizeof(ReadableStringTable) == 0x18);
@@ -62,7 +62,7 @@ namespace RE
 			// members
 			WritableStringArray*                           stringArray;   // 00
 			BSTScrapHashMap<BSFixedString, std::uint32_t>* referenceMap;  // 08
-			REX::TEnumSet<StringIndexSize, std::int32_t>    indexSize;     // 10
+			REX::TEnumSet<StringIndexSize, std::int32_t>   indexSize;     // 10
 		};
 		static_assert(sizeof(WritableStringTable) == 0x18);
 
