@@ -34,6 +34,7 @@ if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
 	message(FATAL_ERROR "in-source builds are not allowed")
 endif()
 
+find_package(commonlib-shared REQUIRED CONFIG)
 find_package(spdlog CONFIG REQUIRED)
 find_path(RAPIDCSV_INCLUDE_DIRS "rapidcsv.h")
 find_package(directxtk CONFIG REQUIRED)
@@ -98,6 +99,7 @@ if(COMMONLIB_PREBUILT_RESOLVED)
 	endif()
 	target_link_libraries(
 		"${PROJECT_NAME}" INTERFACE
+		commonlib-shared::commonlib-shared
 		spdlog::spdlog
 		Microsoft::DirectXTK
 		advapi32.lib
@@ -276,6 +278,7 @@ target_compile_definitions(
 target_link_libraries(
 	"${PROJECT_NAME}"
 	PUBLIC
+	commonlib-shared::commonlib-shared
 	spdlog::spdlog
 	Microsoft::DirectXTK
 	advapi32.lib

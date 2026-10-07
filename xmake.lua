@@ -5,12 +5,48 @@ set_xmakever("3.0.0")
 set_project("commonlibsse-ng")
 set_arch("x64")
 set_languages("c++23")
+set_license("GPL-3.0-or-later")
 set_warnings("allextra")
 set_encodings("utf-8")
 
 -- add common rules
 add_rules("mode.debug", "mode.releasedbg")
 add_rules("plugin.vsxmake.autoupdate")
+
+package("commonlib-shared")
+    set_homepage("https://github.com/libxse/commonlib-shared")
+    set_description("Shared library for CommonLib projects")
+    set_license("GPL-3.0-or-later")
+
+    add_urls("https://github.com/libxse/commonlib-shared.git")
+    add_versions("2026.08.21", "29fbdb0e2dc548c9ab22f6964981d75090dc9094")
+
+    add_configs("ini", { description = "enable REX::INI settings support", default = false, type = "boolean" })
+    add_configs("json", { description = "enable REX::JSON settings support", default = false, type = "boolean" })
+    add_configs("random", { description = "enable REX::TRandom support", default = false, type = "boolean" })
+    add_configs("toml", { description = "enable REX::TOML settings support", default = false, type = "boolean" })
+    add_configs("xbyak", { description = "enable xbyak support for Trampoline", default = false, type = "boolean" })
+
+    add_deps("spdlog v1.16.0", { configs = { header_only = false, wchar = true, std_format = true } })
+
+    on_load(function(package)
+        if package:config("ini") then
+            package:add("deps", "simpleini v4.25")
+        end
+        if package:config("json") then
+            package:add("deps", "glaze v7.0.0")
+        end
+        if package:config("random") then
+            package:add("deps", "xoshiro-cpp 2021.08.04")
+        end
+        if package:config("toml") then
+            package:add("deps", "toml11 v4.4.0")
+        end
+        if package:config("xbyak") then
+            package:add("deps", "xbyak v7.06")
+        end
+    end)
+package_end()
 
 -- add options
 option("rex_ini", function()
@@ -68,6 +104,14 @@ option("tests", function()
 end)
 
 -- add packages
+add_requires("commonlib-shared 2026.08.21", {
+    configs = {
+        ini = has_config("rex_ini"),
+        json = has_config("rex_json"),
+        toml = has_config("rex_toml"),
+        xbyak = has_config("skse_xbyak")
+    }
+})
 add_requires("directxmath 2024.02", "directxtk 24.2.0")
 add_requires("spdlog v1.16.0", { configs = { header_only = false, wchar = true, std_format = true } })
 
@@ -236,6 +280,7 @@ target("commonlibsse-ng", function()
     set_default(os.scriptdir() == os.projectdir())
 
     -- add packages
+    add_packages("commonlib-shared", { public = true })
     add_packages("directxmath", "directxtk", "spdlog", { public = true })
 
     -- add config packages
@@ -284,7 +329,6 @@ target("commonlibsse-ng", function()
     add_headerfiles(
         "include/(RE/**.h)",
         "include/(REL/**.h)",
-        "include/(REX/**.h)",
         "include/(SKSE/**.h)"
     )
 

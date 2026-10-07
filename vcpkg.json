@@ -7,8 +7,8 @@
   "homepage": "https://github.com/CharmedBaryon/CommonLibSSE",
   "license": "GPL-3.0-or-later",
   "supports": "windows & x64",
-  "builtin-baseline": "ee12231b20c95013c6638d845d04c91559a1d1ff",
   "dependencies": [
+    "commonlib-shared",
     {
       "name": "vcpkg-cmake-config",
       "host": true
@@ -38,10 +38,6 @@
       "version>=": "4.25"
     },
     {
-      "name": "spdlog",
-      "version>=": "1.16.0"
-    },
-    {
       "name": "toml11",
       "version>=": "4.4.0"
     },
@@ -57,6 +53,50 @@
         {
           "name": "catch2",
           "version>=": "3.11.0"
+        }
+      ]
+    },
+    "ini": {
+      "description": "enable REX::INI settings support",
+      "dependencies": [
+        {
+          "name": "commonlib-shared",
+          "features": [
+            "ini"
+          ]
+        }
+      ]
+    },
+    "json": {
+      "description": "enable REX::JSON settings support",
+      "dependencies": [
+        {
+          "name": "commonlib-shared",
+          "features": [
+            "json"
+          ]
+        }
+      ]
+    },
+    "toml": {
+      "description": "enable REX::TOML settings support",
+      "dependencies": [
+        {
+          "name": "commonlib-shared",
+          "features": [
+            "toml"
+          ]
+        }
+      ]
+    },
+    "xbyak": {
+      "description": "enable xbyak support for Trampoline",
+      "dependencies": [
+        {
+          "name": "commonlib-shared",
+          "features": [
+            "xbyak"
+          ]
         }
       ]
     }
