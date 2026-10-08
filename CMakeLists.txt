@@ -1,8 +1,5 @@
 cmake_minimum_required(VERSION 3.19)
 
-option(REX_OPTION_INI "Enables ini config support for REX." OFF)
-option(REX_OPTION_JSON "Enables json config support for REX." OFF)
-option(REX_OPTION_TOML "Enables toml config support for REX." OFF)
 option(SKSE_SUPPORT_XBYAK "Enables trampoline support for Xbyak." OFF)
 option(SKSE_SUPPORT_PATCH_SAFETY "Validate Trampoline::write_branch patch sites land on instruction boundaries before writing (vendors hde64); logs and still writes on failure, never blocks." ON)
 option(ENABLE_SKYRIM_SE "Enable support for Skyrim SE in the dynamic runtime feature." ON)
@@ -83,7 +80,7 @@ if(COMMONLIB_PREBUILT_RESOLVED)
 	)
 	# The lib bakes every REX config + xbyak, but they're additive — expose only the ones the
 	# consumer opted into, so it gets exactly the API (and headers) it asked for.
-	foreach(_opt REX_OPTION_INI REX_OPTION_JSON REX_OPTION_TOML SKSE_SUPPORT_XBYAK)
+	foreach(_opt SKSE_SUPPORT_XBYAK)
 		if(${_opt})
 			target_compile_definitions("${PROJECT_NAME}" INTERFACE ${_opt}=1)
 		endif()
@@ -169,9 +166,6 @@ target_compile_definitions(
 	PUBLIC
 	WINVER=0x0601 # windows 7, minimum supported version by skyrim special edition
 	_WIN32_WINNT=0x0601
-	"$<$<BOOL:${REX_OPTION_INI}>:REX_OPTION_INI=1>"
-	"$<$<BOOL:${REX_OPTION_JSON}>:REX_OPTION_JSON=1>"
-	"$<$<BOOL:${REX_OPTION_TOML}>:REX_OPTION_TOML=1>"
 	"$<$<BOOL:${SKSE_SUPPORT_XBYAK}>:SKSE_SUPPORT_XBYAK=1>"
 	"$<$<BOOL:${SKSE_SUPPORT_PATCH_SAFETY}>:SKSE_SUPPORT_PATCH_SAFETY=1>"
 	"$<$<BOOL:${ENABLE_SKYRIM_SE}>:ENABLE_SKYRIM_SE=1>"

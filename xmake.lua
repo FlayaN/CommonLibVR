@@ -25,7 +25,6 @@ package("commonlib-shared")
     add_configs("json", { description = "enable REX::JSON settings support", default = false, type = "boolean" })
     add_configs("random", { description = "enable REX::TRandom support", default = false, type = "boolean" })
     add_configs("toml", { description = "enable REX::TOML settings support", default = false, type = "boolean" })
-    add_configs("xbyak", { description = "enable xbyak support for Trampoline", default = false, type = "boolean" })
 
     add_deps("spdlog v1.16.0", { configs = { header_only = false, wchar = true, std_format = true } })
 
@@ -42,31 +41,10 @@ package("commonlib-shared")
         if package:config("toml") then
             package:add("deps", "toml11 v4.4.0")
         end
-        if package:config("xbyak") then
-            package:add("deps", "xbyak v7.06")
-        end
     end)
 package_end()
 
 -- add options
-option("rex_ini", function()
-    set_default(false)
-    set_description("Enable ini config support for REX")
-    add_defines("REX_OPTION_INI=1")
-end)
-
-option("rex_json", function()
-    set_default(false)
-    set_description("Enable json config support for REX")
-    add_defines("REX_OPTION_JSON=1")
-end)
-
-option("rex_toml", function()
-    set_default(false)
-    set_description("Enable toml config support for REX")
-    add_defines("REX_OPTION_TOML=1")
-end)
-
 option("skyrim_se", function()
     set_default(true)
     set_description("Enable runtime support for Skyrim SE")
@@ -114,18 +92,6 @@ add_requires("commonlib-shared 2026.08.21", {
 })
 add_requires("directxmath 2024.02", "directxtk 24.2.0")
 add_requires("spdlog v1.16.0", { configs = { header_only = false, wchar = true, std_format = true } })
-
-if has_config("rex_ini") then
-    add_requires("simpleini v4.25")
-end
-
-if has_config("rex_json") then
-    add_requires("nlohmann_json v3.12.0")
-end
-
-if has_config("rex_toml") then
-    add_requires("toml11 v4.4.0")
-end
 
 if has_config("skse_xbyak") then
     add_requires("xbyak v7.06")

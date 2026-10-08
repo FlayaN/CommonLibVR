@@ -9,7 +9,7 @@
       "name": "spdlog",
       "version>=": "1.16.0",
       "default-features": false,
-      "features": [ "wchar" ]
+      "features": ["wchar"]
     },
     {
       "name": "vcpkg-cmake",
@@ -23,23 +23,19 @@
   "features": {
     "ini": {
       "description": "REX::INI settings support",
-      "dependencies": [ "simpleini" ]
+      "dependencies": [{ "name": "simpleini", "version>=": "4.25" }]
     },
     "json": {
       "description": "REX::JSON settings support",
-      "dependencies": [ "glaze" ]
+      "dependencies": [{ "name": "glaze", "version>=": "7.0.0" }]
     },
     "random": {
       "description": "enable REX::TRandom support",
-      "dependencies": [ "xoshiro-cpp" ]
+      "dependencies": [{ "name": "xoshiro-cpp", "version>=": "2021.08.04" }]
     },
     "toml": {
       "description": "REX::TOML settings support",
-      "dependencies": [ "toml11" ]
-    },
-    "xbyak": {
-      "description": "xbyak trampoline support",
-      "dependencies": [ "xbyak" ]
+      "dependencies": [{ "name": "toml11", "version>=": "4.4.0" }]
     }
   }
 }
