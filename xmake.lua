@@ -25,6 +25,7 @@ package("commonlib-shared")
     add_configs("json", { description = "enable REX::JSON settings support", default = false, type = "boolean" })
     add_configs("random", { description = "enable REX::TRandom support", default = false, type = "boolean" })
     add_configs("toml", { description = "enable REX::TOML settings support", default = false, type = "boolean" })
+    add_configs("xbyak", { description = "enable xbyak support for Trampoline", default = false, type = "boolean" })
 
     add_deps("spdlog v1.16.0", { configs = { header_only = false, wchar = true, std_format = true } })
 
@@ -41,6 +42,19 @@ package("commonlib-shared")
         if package:config("toml") then
             package:add("deps", "toml11 v4.4.0")
         end
+        if package:config("xbyak") then
+            package:add("deps", "xbyak v7.06")
+        end
+    end)
+
+    on_install("windows", function(package)
+        import("package.tools.xmake").install(package, {
+            "--commonlib_ini=" .. (package:config("ini") and "y" or "n"),
+            "--commonlib_json=" .. (package:config("json") and "y" or "n"),
+            "--commonlib_toml=" .. (package:config("toml") and "y" or "n"),
+            "--commonlib_xbyak=" .. (package:config("xbyak") and "y" or "n"),
+            "--commonlib_random=" .. (package:config("random") and "y" or "n")
+        })
     end)
 package_end()
 
@@ -61,6 +75,21 @@ option("skyrim_vr", function()
     set_default(true)
     set_description("Enable runtime support for Skyrim VR")
     add_defines("ENABLE_SKYRIM_VR=1")
+end)
+
+option("rex_ini", function()
+    set_default(false)
+    set_description("Enable REX::INI settings support")
+end)
+
+option("rex_json", function()
+    set_default(false)
+    set_description("Enable REX::JSON settings support")
+end)
+
+option("rex_toml", function()
+    set_default(false)
+    set_description("Enable REX::TOML settings support")
 end)
 
 option("skse_xbyak", function()
@@ -258,18 +287,6 @@ target("commonlibsse-ng", function()
         if os.isdir(ovr) then
             add_includedirs(ovr, { public = true })
         end
-    end
-
-    if has_config("rex_ini") then
-        add_packages("simpleini", { public = true })
-    end
-
-    if has_config("rex_json") then
-        add_packages("nlohmann_json", { public = true })
-    end
-
-    if has_config("rex_toml") then
-        add_packages("toml11", { public = true })
     end
 
     if has_config("skse_xbyak") then
